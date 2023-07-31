@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "./SignUpForm.module.css";
 
 
 export default function SignUpForm({setToken,token}) {
@@ -35,17 +36,17 @@ async function handleSubmit (e){
 
 }
 return (
-<form onSubmit={handleSubmit}>
-<h2> Sign Up!</h2>
-{error && <p> {error}</p>}
-<label>
-    Username: <input value={userName} onChange={(e)=> setUserName(e.target.value)}/>
+<form onSubmit={handleSubmit} className={styles.form}>
+<h2 className={styles.heading}> Sign Up!</h2>
+{error && <p className ={styles.error}> {error}</p>}
+<label className={styles.label}>
+    Username: <input className={styles.input}value={userName} onChange={(e)=> setUserName(e.target.value)}/>
 </label>
-<label>
-    Password: <input value={password} onChange={(e)=> setPassword(e.target.value)}/>
+<label className={styles.label}>
+    Password: <input className={styles.input}value={password} onChange={(e)=> setPassword(e.target.value)}/>
 </label>
-<label>
-    <button> Submit</button>
+<label className={styles.label}>
+    <button className={styles.button}> Submit</button>
 </label>
 
 

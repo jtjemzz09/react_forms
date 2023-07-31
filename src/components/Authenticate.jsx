@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "./Authenticate.module.css";
 
 export default function Authenticate ({token}){
 const [authenticate, setauthenticate] = useState(null);
@@ -22,7 +23,7 @@ if (!response.ok){
     throw new Error('Failed to authenticate token')
 }
 const result = await response.json();
-setSuccessMessage(result.message);
+setSuccessMessage(`Hello, ${result.data.username}! Authentication successful.`);
 setUserName(result.data.username);
 
 
@@ -38,10 +39,10 @@ console.log("handleAuthenticate function fired!")
 }
 
     return ( 
-    <div><h2> Authenticate</h2>
-    {successMessage && <p> {successMessage}</p>}
-    {error&&<p>{error}</p>}
-    <button onClick ={handleAuthenticate}> Authenticate Token</button>
+    <div className={styles.authenticateContainer}><h2 className={styles.heading}> Authenticate</h2>
+    {successMessage && <p className={styles.successMessage}> {successMessage}</p>}
+    {error&&<p className={styles.errorMessage}>{error}</p>}
+    <button className={styles.authenticateButton}onClick ={handleAuthenticate}> Authenticate Token</button>
     </div>
 )}
 
